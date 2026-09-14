@@ -1796,3 +1796,55 @@ document.querySelectorAll('.medspa-spacification').forEach(row => {
   row.addEventListener('mouseenter', () => gsap.to(img, { rotation: -5, duration: 0.5, ease: "power2.out" }));
   row.addEventListener('mouseleave', () => gsap.to(img, { rotation: base, duration: 0.5, ease: "power2.out" }));
 });
+
+// 
+// medspa Timeline js
+document.querySelectorAll('.medspa-stagger-section').forEach((section) => {
+
+  const animate = (selector, vars) => {
+    const elements = section.querySelectorAll(selector);
+
+    if (!elements.length) return;
+
+    gsap.from(elements, {
+      scrollTrigger: {
+        trigger: section,
+        start: 'top 78%',
+        once: true
+      },
+      ...vars
+    });
+  };
+
+  // Items
+  animate('.medspa-stagger-item', {
+    y: 30,
+    opacity: 0,
+    duration: 0.65,
+    stagger: 0.22,
+    ease: 'power3.out'
+  });
+
+  // Desktop curve
+  animate('.medspa-timeline-curve-desktop', {
+    opacity: 0,
+    scale: 0.98,
+    duration: 0.9,
+    ease: 'power3.out'
+  });
+
+  // Desktop line
+  animate('.medspa-timeline-line-desktop', {
+    width: 0,
+    duration: 0.9,
+    ease: 'power3.out'
+  });
+
+  // Mobile line
+  animate('.medspa-timeline-line-mobile', {
+    height: 0,
+    duration: 0.8,
+    ease: 'power3.out'
+  });
+
+});
