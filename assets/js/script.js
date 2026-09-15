@@ -1798,7 +1798,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-// 
+// Medspa Niche specification
 document.querySelectorAll('.medspa-spacification').forEach(row => {
   const img = row.querySelector('img');
   const base = gsap.getProperty(img, "rotation"); // or set manually
@@ -1806,7 +1806,7 @@ document.querySelectorAll('.medspa-spacification').forEach(row => {
   row.addEventListener('mouseleave', () => gsap.to(img, { rotation: base, duration: 0.5, ease: "power2.out" }));
 });
 
-// 
+
 // medspa Timeline js
 document.addEventListener("DOMContentLoaded", () => {
   const wrappers = document.querySelectorAll(".medspa-stagger-wrap, .medspa-stagger-mobile");
@@ -1852,7 +1852,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-// FAQ item
+// Medspa FAQ accordion
 function toggleFaq(trigger) {
   const currentItem = trigger.closest('.medspa-faq-item');
 
@@ -1910,4 +1910,7 @@ function toggleFaq(trigger) {
     }
   }
 }
+
+
+// 
 
