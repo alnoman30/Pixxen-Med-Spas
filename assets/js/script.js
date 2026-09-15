@@ -1752,50 +1752,42 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 // Medspa heading reveal animation
-document.addEventListener("DOMContentLoaded", function () {
-  gsap.registerPlugin(ScrollTrigger);
 
-  document.querySelectorAll(".medspa-section-heading").forEach(function (section) {
-    const shortHead = section.querySelector(".medspa-short-head");
-    const heading = section.querySelector("h2");
+document.querySelectorAll('.medspa-section-heading').forEach((section) => {
+  const shortHeading = section.querySelector('.medspa-short-heading');
+  const longHeading = section.querySelector('.medspa-long-heading');
 
-    // Animate short heading only if it exists
-    if (shortHead) {
-      gsap.set(shortHead, { display: "inline-block" });
-
-      gsap.from(shortHead, {
-        clipPath: "inset(0 100% 0 0)",
-        filter: "blur(6px)",
-        duration: 1.2,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        }
-      });
-    }
-
-    // Animate main heading independently
-    if (heading) {
-      gsap.set(heading, { display: "inline-block" });
-
-      gsap.from(heading, {
-        yPercent: 60,
-        opacity: 0,
-        filter: "blur(10px)",
-        duration: 1.1,
-        ease: "power3.out",
-        delay: shortHead ? 0.15 : 0,
-        scrollTrigger: {
-          trigger: section,
-          start: "top 80%",
-          toggleActions: "play none none none"
-        }
-      });
+  const tl = gsap.timeline({
+    scrollTrigger: {
+      trigger: section,
+      start: "top 85%",
+      toggleActions: "play none none none",
     }
   });
+
+  // Short heading
+  if (shortHeading) {
+    tl.from(shortHeading, {
+      y: -25,
+      opacity: 0,
+      filter: "blur(10px)",
+      duration: 1,
+      ease: "power3.out",
+    });
+  }
+
+  // Long heading
+  if (longHeading) {
+    tl.from(longHeading, {
+      y: 35,
+      opacity: 0,
+      filter: "blur(10px)",
+      duration: 1.1,
+      ease: "power3.out",
+    }, shortHeading ? "-=0.7" : "0");
+  }
 });
+
 
 
 // Medspa Niche specification

@@ -948,3 +948,9 @@ html.lenis body {
       }
     }
 
+.medspa-short-heading {
+  display: inline-block;
+}
+.medspa-long-heading {
+  display: block; /
+}
