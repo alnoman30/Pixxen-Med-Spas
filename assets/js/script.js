@@ -1813,29 +1813,26 @@ document.addEventListener("DOMContentLoaded", () => {
 
   wrappers.forEach((wrapper) => {
     const items = wrapper.querySelectorAll(".medspa-stagger-item");
-    
-    // Optional: Select inner elements for a multi-layered reveal
+
     const markers = wrapper.querySelectorAll(".medspa-stagger-marker");
     const cards = wrapper.querySelectorAll(".medspa-stagger-card");
 
-    // Main container reveal with modern easing & blur
     gsap.from(items, {
       scrollTrigger: {
         trigger: wrapper,
         start: "top 80%",
         end: "bottom 20%",
-        toggleActions: "play reverse play reverse", // Replays gracefully when scrolling back up/down
+        toggleActions: "play none none none",
       },
       y: 60,
       opacity: 0,
       scale: 0.95,
-      filter: "blur(8px)", // Adds a sleek cinematic entry effect
+      filter: "blur(8px)",
       duration: 1,
       stagger: 0.2,
-      ease: "power4.out", // Smoother, more premium deceleration
+      ease: "power4.out",
     });
 
-    // Bonus pop effect for the step badges
     gsap.from(markers, {
       scrollTrigger: {
         trigger: wrapper,
@@ -1847,10 +1844,11 @@ document.addEventListener("DOMContentLoaded", () => {
       duration: 0.6,
       delay: 0.2,
       stagger: 0.15,
-      ease: "back.out(1.7)", // Gives a nice energetic pop-in
+      ease: "back.out(1.7)",
     });
   });
 });
+
 
 // Medspa FAQ accordion
 function toggleFaq(trigger) {
