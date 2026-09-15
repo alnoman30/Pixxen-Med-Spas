@@ -508,13 +508,13 @@ document.addEventListener("DOMContentLoaded", function () {
 // FAQ ACCORDION
 // ============================================
 document.addEventListener("DOMContentLoaded", function () {
-  const faqItems = document.querySelectorAll(".faq-item");
+  const faqItems = document.querySelectorAll(".medspa-faq-item");
 
   if (faqItems.length === 0 || typeof gsap === "undefined") return;
 
   // Initialize all FAQ items as collapsed
   faqItems.forEach((item) => {
-    const answer = item.querySelector(".faq-answer");
+    const answer = item.querySelector(".medspa-faq-answer");
     const icon = item.querySelector(".plus-icon");
 
     // Remove active class from all items
@@ -533,8 +533,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Add click event listeners
   faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-    const answer = item.querySelector(".faq-answer");
+    const question = item.querySelector(".medspa-faq-question");
+    const answer = item.querySelector(".medspa-faq-answer");
     const icon = item.querySelector(".plus-icon");
 
     if (!question) return;
@@ -544,7 +544,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
       // Close all other items
       faqItems.forEach((otherItem) => {
-        const otherAnswer = otherItem.querySelector(".faq-answer");
+        const otherAnswer = otherItem.querySelector(".medspa-faq-answer");
         const otherIcon = otherItem.querySelector(".plus-icon");
 
         otherItem.classList.remove("active");
@@ -1759,35 +1759,44 @@ document.addEventListener("DOMContentLoaded", function () {
     const shortHead = section.querySelector(".medspa-short-head");
     const heading = section.querySelector("h2");
 
-    gsap.set([shortHead, heading], { display: "inline-block" });
+    // Animate short heading only if it exists
+    if (shortHead) {
+      gsap.set(shortHead, { display: "inline-block" });
 
-    gsap.from(shortHead, {
-      clipPath: "inset(0 100% 0 0)",
-      filter: "blur(6px)",
-      duration: 1.2,
-      ease: "power2.out",
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
+      gsap.from(shortHead, {
+        clipPath: "inset(0 100% 0 0)",
+        filter: "blur(6px)",
+        duration: 1.2,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
 
-    gsap.from(heading, {
-      yPercent: 60,
-      opacity: 0,
-      filter: "blur(10px)",
-      duration: 1.1,
-      ease: "power3.out",
-      delay: 0.15,
-      scrollTrigger: {
-        trigger: section,
-        start: "top 80%",
-        toggleActions: "play none none none"
-      }
-    });
+    // Animate main heading independently
+    if (heading) {
+      gsap.set(heading, { display: "inline-block" });
+
+      gsap.from(heading, {
+        yPercent: 60,
+        opacity: 0,
+        filter: "blur(10px)",
+        duration: 1.1,
+        ease: "power3.out",
+        delay: shortHead ? 0.15 : 0,
+        scrollTrigger: {
+          trigger: section,
+          start: "top 80%",
+          toggleActions: "play none none none"
+        }
+      });
+    }
   });
 });
+
 
 // 
 document.querySelectorAll('.medspa-spacification').forEach(row => {
@@ -1799,52 +1808,106 @@ document.querySelectorAll('.medspa-spacification').forEach(row => {
 
 // 
 // medspa Timeline js
-document.querySelectorAll('.medspa-stagger-section').forEach((section) => {
+document.addEventListener("DOMContentLoaded", () => {
+  const wrappers = document.querySelectorAll(".medspa-stagger-wrap, .medspa-stagger-mobile");
 
-  const animate = (selector, vars) => {
-    const elements = section.querySelectorAll(selector);
+  wrappers.forEach((wrapper) => {
+    const items = wrapper.querySelectorAll(".medspa-stagger-item");
+    
+    // Optional: Select inner elements for a multi-layered reveal
+    const markers = wrapper.querySelectorAll(".medspa-stagger-marker");
+    const cards = wrapper.querySelectorAll(".medspa-stagger-card");
 
-    if (!elements.length) return;
-
-    gsap.from(elements, {
+    // Main container reveal with modern easing & blur
+    gsap.from(items, {
       scrollTrigger: {
-        trigger: section,
-        start: 'top 78%',
-        once: true
+        trigger: wrapper,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play reverse play reverse", // Replays gracefully when scrolling back up/down
       },
-      ...vars
+      y: 60,
+      opacity: 0,
+      scale: 0.95,
+      filter: "blur(8px)", // Adds a sleek cinematic entry effect
+      duration: 1,
+      stagger: 0.2,
+      ease: "power4.out", // Smoother, more premium deceleration
     });
-  };
 
-  // Items
-  animate('.medspa-stagger-item', {
-    y: 30,
-    opacity: 0,
-    duration: 0.65,
-    stagger: 0.22,
-    ease: 'power3.out'
+    // Bonus pop effect for the step badges
+    gsap.from(markers, {
+      scrollTrigger: {
+        trigger: wrapper,
+        start: "top 80%",
+        toggleActions: "play none none none",
+      },
+      scale: 0.5,
+      opacity: 0,
+      duration: 0.6,
+      delay: 0.2,
+      stagger: 0.15,
+      ease: "back.out(1.7)", // Gives a nice energetic pop-in
+    });
   });
-
-  // Desktop curve
-  animate('.medspa-timeline-curve-desktop', {
-    opacity: 0,
-    scale: 0.98,
-    duration: 0.9,
-    ease: 'power3.out'
-  });
-
-  // Desktop line
-  animate('.medspa-timeline-line-desktop', {
-    width: 0,
-    duration: 0.9,
-    ease: 'power3.out'
-  });
-
-  // Mobile line
-  animate('.medspa-timeline-line-mobile', {
-    height: 0,
-    duration: 0.8,
-    ease: 'power3.out'
-  });
-
 });
+
+// FAQ item
+function toggleFaq(trigger) {
+  const currentItem = trigger.closest('.medspa-faq-item');
+
+  if (!currentItem) return;
+
+  const content = currentItem.querySelector('.medspa-faq-content');
+  const icon = currentItem.querySelector('.icon-img');
+
+  if (!content) return;
+
+  const isOpen = currentItem.classList.contains('bg-white');
+
+  // Close all FAQ items
+  document.querySelectorAll('.medspa-faq-item').forEach(item => {
+    item.classList.remove(
+      'bg-white',
+      'rounded-3xl'
+    );
+
+    item.classList.add(
+      'border-b',
+      'border-[#E1D0D6]'
+    );
+
+    const itemContent = item.querySelector('.medspa-faq-content');
+    const itemIcon = item.querySelector('.icon-img');
+
+    if (itemContent) {
+      itemContent.classList.remove('grid-rows-[1fr]');
+      itemContent.classList.add('grid-rows-[0fr]');
+    }
+
+    if (itemIcon) {
+      itemIcon.style.transform = 'rotate(0deg)';
+    }
+  });
+
+  // If the clicked item was closed, open it
+  if (!isOpen) {
+    currentItem.classList.remove(
+      'border-b',
+      'border-[#E1D0D6]'
+    );
+
+    currentItem.classList.add(
+      'bg-white',
+      'rounded-3xl'
+    );
+
+    content.classList.remove('grid-rows-[0fr]');
+    content.classList.add('grid-rows-[1fr]');
+
+    if (icon) {
+      icon.style.transform = 'rotate(45deg)';
+    }
+  }
+}
+

@@ -1,1 +1,187 @@
-inline-block archivo text-xs md:text-sm xl:text-base bg-[#FBEAF0] text-[#993556] font-normal leading-[130%] rounded-lg md:rounded-[10px] lg:rounded-xl px-2.5 py-1.5 md:px-3 lg:px-2.5 xl:px-3 group-hover:bg-[#993556] group-hover:text-[#FBEAF0] transition-all duration-300 uppercase mb-3 xl:mb-4
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ Section</title>
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts for the serif heading look -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <style>
+    .font-serif-custom {
+      font-family: 'Playfair Display', serif;
+    }
+    /* Smooth rotation animation for the plus/minus icon */
+    .icon-img {
+      transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+  </style>
+</head>
+<body class="bg-[#FAF6F5] text-[#3D2C2E] min-h-screen flex items-center justify-center p-6">
+
+  <section class="max-w-7xl w-full mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+    
+    <!-- Left Column: Heading -->
+    <div class="lg:col-span-4">
+      <h2 class="font-serif-custom text-4xl lg:text-5xl tracking-tight leading-tight">
+        Frequently asked questions
+      </h2>
+    </div>
+
+    <!-- Right Column: Accordion List -->
+    <div class="lg:col-span-8 space-y-3">
+
+      <!-- FAQ Item 1 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">Will my site rank #1 for 'Botox [my city]'?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            While no ethical SEO provider can guarantee the #1 spot overnight, we optimize your site's technical structure, local citations, and on-page metadata to target high-intent local search queries like Botox in your city effectively.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 2 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">How do you handle FDA and state medical board compliance?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            We build compliance structures into your copy and layouts, ensuring required disclaimers, medical director visibility, and safety guidelines align with standard state board and FDA regulations for aesthetic practices.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 3 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">Do you integrate with Aesthetic Record, Boulevard, Symplast, or Nextech?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            Yes, we seamlessly integrate popular med spa EHR, booking, and CRM platforms into your website workflow to ensure patient intake and scheduling run automatically.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 4 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">What if I already have a site on Wix, Squarespace, or an old WordPress build?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            We manage complete platform migrations smoothly, handling redirects, preserving existing SEO equity, and rebuilding your web presence to modern, high-performing standards.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 5 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">Do you do ongoing SEO or content writing after launch?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            Yes, we offer ongoing monthly growth partnerships covering local SEO, blog content creation, link building, and regular optimization updates.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 6 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">How do you handle physician oversight and medical director display?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            We feature designated medical director credentials, bios, and proper supervisory disclosures prominently in designated compliance zones across the site layout.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 7 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">Can you build a multi-location med spa site?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            Absolutely. We build localized landing pages and sub-architectures tailored specifically for multi-location practices wanting localized SEO control.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 8 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">What happens after the 30-day support window?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            After the initial 30 days, you can choose one of our flexible care plans for continued maintenance, updates, security checks, and technical support.
+          </p>
+        </div>
+      </div>
+
+      <!-- FAQ Item 9 -->
+      <div class="faq-item border-b border-[#EADCD7] transition-all duration-300">
+        <button onclick="toggleFaq(this)" class="w-full py-5 px-6 flex justify-between items-center text-left focus:outline-none cursor-pointer">
+          <span class="font-serif-custom text-lg lg:text-xl pr-4">How does this compare to RealSelf or Allergan-network paid promotion?</span>
+          <img src="https://api.iconify.design/lucide:plus.svg" class="icon-img w-5 h-5 flex-shrink-0" alt="Toggle Icon">
+        </button>
+        <div class="faq-content max-h-0 overflow-hidden transition-all duration-300 ease-in-out px-6">
+          <p class="pb-6 text-sm lg:text-base text-[#5A4548] leading-relaxed">
+            Unlike rental platforms or directory listings where you compete side-by-side with competitors, owning your custom high-performance web asset builds independent, long-term brand equity.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- JavaScript for Smooth Accordion & Clean Icon Rotation -->
+  <script>
+    function toggleFaq(button) {
+      const currentItem = button.parentElement;
+      const content = currentItem.querySelector('.faq-content');
+      const icon = currentItem.querySelector('.icon-img');
+      const isOpen = currentItem.classList.contains('bg-white');
+
+      // Close all other items and reset their icons
+      document.querySelectorAll('.faq-item').forEach(item => {
+        item.classList.remove('bg-white', 'rounded-3xl', 'shadow-sm');
+        item.classList.add('border-b', 'border-[#EADCD7]');
+        item.querySelector('.faq-content').style.maxHeight = null;
+        
+        const otherIcon = item.querySelector('.icon-img');
+        otherIcon.style.transform = 'rotate(0deg)';
+      });
+
+      // Toggle current item
+      if (!isOpen) {
+        currentItem.classList.remove('border-b', 'border-[#EADCD7]');
+        currentItem.classList.add('bg-white', 'rounded-3xl', 'shadow-sm');
+        content.style.maxHeight = content.scrollHeight + "px";
+        icon.style.transform = 'rotate(45deg)'; // Smooth 45deg/90deg spin for dynamic feel
+      } else {
+        content.style.maxHeight = null;
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+  </script>
+
+</body>
+</html>
